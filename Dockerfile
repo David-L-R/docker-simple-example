@@ -1,9 +1,12 @@
 # Path: dockerfile
-FROM alpine
+FROM node:alpine
 
-RUN apk add --update nodejs npm
+WORKDIR /usr/src/app
 
+COPY ./package.json ./
 # install express
-RUN npm install -g express
+RUN npm install
+
+COPY ./ ./ 
 
 CMD ["npm", "start"]
